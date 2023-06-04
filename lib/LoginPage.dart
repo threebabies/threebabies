@@ -1,3 +1,4 @@
+import 'package:baby/FirebaseUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -9,8 +10,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _auth = FirebaseAuth.instance;
-  final _googleSignIn = GoogleSignIn();
+  final _auth = FirebaseUtils().app == null ? FirebaseAuth.instance : FirebaseAuth.instanceFor(app: FirebaseUtils().app!);
+  final _googleSignIn = GoogleSignIn(
+      clientId: "336744937807-4b594bhe1nc46s87hr8ajnm8upf6taqr.apps.googleusercontent.com",
+  );
   bool _isLoading = false;
 
   @override

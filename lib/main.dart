@@ -3,16 +3,17 @@ import 'LoginPage.dart';
 import 'OrderFormPage.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'FirebaseUtils.dart';
+// api : AIzaSyCqtHedTAXDlNcwwe3o8i8WB--saGuXu0E
+// web : 336744937807-4b594bhe1nc46s87hr8ajnm8upf6taqr.apps.googleusercontent.com
+void main() async{
 
-// void main() async{
-//   WidgetsFlutterBinding.ensureInitialized();
-//   FirebaseApp app = await Firebase.initializeApp();
-//   runApp(const MyApp());
-// }
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseUtils().init();
+  runApp(const MyApp());
+}
 
-void main() => runApp(const MyApp());
+// void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: LoginPage(),
-      home: OrderFormPage(),
+      home: LoginPage(),
+      // home: OrderFormPage(),
     );
   }
 }
